@@ -2,9 +2,7 @@
 
 namespace App\Controllers;
 
-// use App\Models\{ MProducto, MNoticias };
 use App\Controllers\{ NewsController, ProductController, CIndex };
-
 
 class HomeController {
 

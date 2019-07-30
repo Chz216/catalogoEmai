@@ -1,33 +1,24 @@
-<?php
-
-// namespace App\Views\Pages;
-
-use App\Controllers\{ CNoticia, CIndex };
-
-$cIndex = new CIndex();
-$cNoticia = new CNoticia();
-?>
 <!DOCTYPE html>
 <html>
     <head>
         <title>Emai</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="app/views/assets/css/bootstrap.css" rel="stylesheet" type="text/css"/>
-        <link href="app/views/assets/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
-        <link href="app/views/assets/estilos/estilos.css" rel="stylesheet" type="text/css"/>
+        <link href="app/Views/assets/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+        <link href="app/Views/assets/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+        <link href="app/Views/assets/estilos/estilos.css" rel="stylesheet" type="text/css"/>
         <link href="https://fonts.googleapis.com/css?family=DM+Sans|Poppins&display=swap" rel="stylesheet">
     </head>
     <body>
         <nav class="navbar navbar-expand-lg bg-black">
-            <a class="navbar-brand" href="index.php "><img src="app/views/assets/images/log_emai.png" alt="navbar" width="110px"></a>
+            <a class="navbar-brand" href="index.php "><img src="app/Views/assets/images/log_emai.png" alt="navbar" width="110px"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNabvar">
               <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="myNabvar">
               <ul class="navbar-nav mr-4">  
 <!--                 Falta reacomodar -->
-                  <!-- <?php /*echo $cIndex->MenuInstrumentos()*/?> -->
+                  <!-- Pendiente de navbar dinamico -->
               </ul>
                 <form class="navbar-form" role="search">
                   <div class="input-group">
@@ -47,9 +38,7 @@ $cNoticia = new CNoticia();
             <div class="row">
                 <div class="col-lg-12">
                     <div class="row">
-                       
-                        
-                        <!-- <?php /* echo $cNoticia->Noticias()*/ ?> -->
+                        <?php echo $newsController->getNews() ?>
                     </div>
                 </div> 
 
@@ -81,7 +70,7 @@ $cNoticia = new CNoticia();
                             <h6 class="lead">TIENDA MUSICAL</h6>    
                         </div>
                         <div class="col-lg-12 col-md-12 text-center">
-                            <img src="app/views/assets/images/emai.png" width="120" height="70" alt="">    
+                            <img src="app/Views/assets/images/emai.png" width="120" height="70" alt="">    
                         </div>
                         <div class="col-lg-12 text-center">
                             <h6 class="lead">CONÓCENOS</h6>

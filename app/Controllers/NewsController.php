@@ -13,6 +13,7 @@ class NewsController {
     }
 
     public function newsAction() {
+        $newsController = new NewsController();
         include './app/Views/Pages/news.php';
     }
 
@@ -40,33 +41,34 @@ class NewsController {
         }
         return $acu;
     }
-      //    Falta agregar el tiempo
-    public function Noticias() {
-        $noticias = $this->model->consultarNoticias();
+
+    //    Falta agregar el tiempo ***** Desde Base de datos ****
+    public function getNews() {
+        $news = $this->model->getNews();
         $acu = "";
-        foreach ($noticias as $noticia) {
+        foreach ($news as $new) {
             $acu = $acu . '
-                       <div class="col-lg-6 col-md-12">
-                            <div class="card mb-3">
-                                <div class="row no-gutters">
-                                    <div class="col-md-4">
-                                        <img src="' . $noticia["imagen"] . '" class="card-img" alt="...">
-                                    </div>
-                                    <div class="col-md-8">
-                                        <div class="card-body">
-                                            <h5 class="card-title">' . $noticia["titulo"] .'</h5>
-                                            <p class="card-text">' . $noticia["descripcion"] . '</p>                                          
-                                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                                        </div>
-                                    </div>
+                <div class="col-lg-6 col-md-12">
+                    <div class="card mb-3">
+                        <div class="row no-gutters">
+                            <div class="col-md-4">
+                                <img src="' . $new["imagen"] . '" class="card-img" alt="...">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title">' . $new["titulo"] .'</h5>
+                                    <p class="card-text">' . $new["descripcion"] . '</p>
+                                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                                 </div>
                             </div>
                         </div>
-
-                ';
+                    </div>
+                </div>
+            ';
         }
         return $acu;
     }
+
     public function NoticiasAdmin() {
         $noticias = $this->model->consultarNoticias();
         $acu = "";

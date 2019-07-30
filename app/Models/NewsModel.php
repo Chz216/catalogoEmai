@@ -14,7 +14,7 @@ class NewsModel extends DataBase {
         }
     }
 
-    public function consultarNoticias(){
+    public function getNews(){
        try {
             $stmt = $this->conn->prepare("SELECT * FROM noticia order by id_noticia ");
             $stmt->execute();
