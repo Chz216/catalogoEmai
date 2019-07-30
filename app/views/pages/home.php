@@ -5,15 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>CatalogoEmai</title>
-    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-    <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
-    <link href="estilos/estilos.css" rel="stylesheet" type="text/css"/>
+    <link href="app/views/assets/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+    <link href="app/views/assets/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+    <link href="app/views/assets/estilos/estilos.css" rel="stylesheet" type="text/css"/>
     <link href="https://fonts.googleapis.com/css?family=DM+Sans|Poppins&display=swap" rel="stylesheet">
 </head>
 <body>
 <!--Inicia Navbar-->
 <nav class="navbar navbar-expand-lg bg-black">
-            <a class="navbar-brand" href="index.php "><img src="images/log_emai.png" alt="navbar" width="110px"></a>
+            <a class="navbar-brand" href="index.php "><img src="app/views/assets/images/log_emai.png" alt="navbar" width="110px"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNabvar">
               <span class="navbar-toggler-icon"></span>
             </button>
@@ -37,13 +37,13 @@
 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="images/comprimida 2.jpg" class="d-block w-100" alt="...">
+                <img src="app/views/assets/images/comprimida 2.jpg" class="d-block w-100" alt="...">
             </div>
             <div class="carousel-item">
-                <img src="images/comprimida.jpg" class="d-block w-100" alt="...">
+                <img src="app/views/assets/images/comprimida.jpg" class="d-block w-100" alt="...">
             </div>
             <div class="carousel-item">
-                <img src="images/comprimida3.jpg" class="d-block w-100" alt="...">
+                <img src="app/views/assets/images/comprimida3.jpg" class="d-block w-100" alt="...">
             </div>
         </div>
         <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
@@ -86,7 +86,7 @@
 
             </div>
             <div class="col-lg-6 col-md-8">
-                <img src="images/imagen 1.jpg" class="img-fluid" alt=""/>
+                <img src="app/views/assets/images/imagen 1.jpg" class="img-fluid" alt=""/>
 
             </div>
         </div>
@@ -113,7 +113,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-6 col-md-12">
-                        <img src="images/imagen bateria comprimida.jpg" class="img-fluid" alt="Responsive image">
+                        <img src="app/views/assets/images/imagen bateria comprimida.jpg" class="img-fluid" alt="Responsive image">
 
                     </div>
                     <div class="col-lg-6  col-md-12">
@@ -143,7 +143,7 @@
                         <h6 class="lead">TIENDA MUSICAL</h6>    
                     </div>
                     <div class="col-lg-12 col-md-12 text-center">
-                        <img src="images/emai.png" width="120" height="70" alt="">    
+                        <img src="app/views/assets/images/emai.png" width="120" height="70" alt="">    
                     </div>
                     <div class="col-lg-12 text-center">
                         <h6 class="lead">CONÓCENOS</h6>
@@ -169,8 +169,8 @@
     </div>
 </footer>
 
-<script src="js/jquery.js" type="text/javascript"></script>
-<script src="js/bootstrap.js" type="text/javascript"></script>
-<script src="scripts/scripts.js" type="text/javascript"></script>
+<script src="app/views/assets/js/jquery.js" type="text/javascript"></script>
+<script src="app/views/assets/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="app/views/assets/scripts/scripts.js" type="text/javascript"></script>
 </body>
 </html>

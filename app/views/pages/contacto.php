@@ -1,14 +1,14 @@
 <?php
-include_once './backend/modelo/BD.php';
-include_once './backend/modelo/MFormulario.php';
-include_once './backend/modelo/MProducto.php';
-include_once './backend/controlador/CFormulario.php';
-include_once './backend/controlador/CIndex.php';
-$cIndex = new CIndex();
-$cFormulario = new CFormulario();
-if(isset($_POST["nombre"]) && isset($_POST["correo"]) && isset($_POST["texto"])){
-    $cFormulario->subirFormulario($_POST["nombre"], $_POST["telefono"], $_POST["asunto"], $_POST["texto"]);
-}
+// include_once './backend/modelo/BD.php';
+// include_once './backend/modelo/MFormulario.php';
+// include_once './backend/modelo/MProducto.php';
+// include_once './backend/controlador/CFormulario.php';
+// include_once './backend/controlador/CIndex.php';
+// $cIndex = new CIndex();
+// $cFormulario = new CFormulario();
+// if(isset($_POST["nombre"]) && isset($_POST["correo"]) && isset($_POST["texto"])){
+//     $cFormulario->subirFormulario($_POST["nombre"], $_POST["telefono"], $_POST["asunto"], $_POST["texto"]);
+// }
 ?>
 <!DOCTYPE html>
 <!--
@@ -18,24 +18,25 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>Emai</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-        <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
-        <link href="estilos/estilos.css" rel="stylesheet" type="text/css"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Contacto</title>
+        <link href="app/views/assets/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+        <link href="app/views/assets/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+        <link href="app/views/assets/estilos/estilos.css" rel="stylesheet" type="text/css"/>
         <link href="https://fonts.googleapis.com/css?family=DM+Sans|Poppins&display=swap" rel="stylesheet">
     </head>
     <body>
      <nav class="navbar navbar-expand-lg bg-black">
-            <a class="navbar-brand" href="index.php "><img src="images/log_emai.png" alt="navbar" width="110px"></a>
+            <a class="navbar-brand" href="index.php "><img src="app/views/assets/images/log_emai.png" alt="navbar" width="110px"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNabvar">
               <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="myNabvar">
               <ul class="navbar-nav mr-4">  
 <!--                 Falta reacomodar -->
-                  <?php echo $cIndex->MenuInstrumentos()?>
+                  <!-- <?php echo $cIndex->MenuInstrumentos()?> -->
               </ul>
                 <form class="navbar-form" role="search">
                   <div class="input-group">
