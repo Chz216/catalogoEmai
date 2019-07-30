@@ -1,16 +1,3 @@
-<?php
-
-namespace App\Views\Pages;
-
-use App\Controllers\{ CFormulario, CIndex };
-
-$cIndex = new CIndex();
-$cFormulario = new CFormulario();
-if(isset($_POST["nombre"]) && isset($_POST["correo"]) && isset($_POST["texto"])){
-    $cFormulario->subirFormulario($_POST["nombre"], $_POST["telefono"], $_POST["asunto"], $_POST["texto"]);
-}
-
-?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,14 +5,14 @@ if(isset($_POST["nombre"]) && isset($_POST["correo"]) && isset($_POST["texto"]))
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Contacto</title>
-    <link href="app/views/assets/css/bootstrap.css" rel="stylesheet" type="text/css"/>
-    <link href="app/views/assets/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
-    <link href="app/views/assets/estilos/estilos.css" rel="stylesheet" type="text/css"/>
+    <link href="app/Views/assets/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+    <link href="app/Views/assets/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+    <link href="app/Views/assets/estilos/estilos.css" rel="stylesheet" type="text/css"/>
     <link href="https://fonts.googleapis.com/css?family=DM+Sans|Poppins&display=swap" rel="stylesheet">
 </head>
 <body>
     <nav class="navbar navbar-expand-lg bg-black">
-        <a class="navbar-brand" href="index.php "><img src="app/views/assets/images/log_emai.png" alt="navbar" width="110px"></a>
+        <a class="navbar-brand" href="index.php "><img src="app/Views/assets/images/log_emai.png" alt="navbar" width="110px"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNabvar">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -98,28 +85,28 @@ if(isset($_POST["nombre"]) && isset($_POST["correo"]) && isset($_POST["texto"]))
             </div>
         </div>
     </section>
-    
+
     <div class="col-lg-12 mt-5">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6">
-                    <form>
+                    <form action="contacto" method="post">
                         <div class="form-group">
                             <label for="exampleInputEmail1">Nombre</label>
-                            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Escribe tu nombre">
+                            <input name="name" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Escribe tu nombre">
                             <br>
 
                             <label for="exampleInputEmail1">Correo electronico</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Escribe tu correo">
+                            <input name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Escribe tu correo">
                             <small id="emailHelp" class="form-text text-muted">Verifica tu correo.</small>
 
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Queja o sugerencia</label>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                            <textarea name="suggestion" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                         </div>
 
-                        <button type="button" class="btn btn-secondary btn-lg btn-block">Enviar</button>
+                        <button type="submit" class="btn btn-secondary btn-lg btn-block">Enviar</button>
 
                     </form>
                 </div>
@@ -141,7 +128,7 @@ if(isset($_POST["nombre"]) && isset($_POST["correo"]) && isset($_POST["texto"]))
                             <h6 class="lead">TIENDA MUSICAL</h6>    
                         </div>
                         <div class="col-lg-12 col-md-12 text-center">
-                            <img src="app/views/assets/images/emai.png" width="120" height="70" alt="">    
+                            <img src="app/Views/assets/images/emai.png" width="120" height="70" alt="">    
                         </div>
                         <div class="col-lg-12 text-center">
                             <h6 class="lead">CONOCENOS</h6>

@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
-class MFormulario extends DataBase {
+class ContactModel extends DataBase {
 
-    public function consultaraFormulario() {
+    public function getForm() {
         try {
             $stmt = $this->conn->prepare("SELECT * FROM formulario");
             $stmt->execute();
@@ -14,7 +14,7 @@ class MFormulario extends DataBase {
         }
     }
 
-    public function totalComentarios (){
+    public function getAmountComments(){
         try {
            $stmt = $this->conn->prepare("SELECT count(*) as total from formulario");
            $stmt->execute();
@@ -26,7 +26,7 @@ class MFormulario extends DataBase {
         }
     }
 
-    public function consultarFormulario($id) {
+    public function getFormById($id) {
         try {
             $stmt = $this->conn->prepare("select * from formulario where id=:id");
             $stmt->bindParam(":id", $id);
@@ -41,22 +41,23 @@ class MFormulario extends DataBase {
         }
     }
 
-    public function insertarFormulario($nombre,$correo,$texto) {
+    public function insertForm($formData) {
         try {
             $stmt = $this->conn->prepare("insert into formulario (nombre,correo,texto) values(:nombre,:correo,:texto)");
-            $stmt->bindParam(":nombre", $nombre);
-            $stmt->bindParam(":correo", $correo);
-            $stmt->bindParam(":texto", $texto);
+            $stmt->bindParam(":nombre", $formData["name"]);
+            $stmt->bindParam(":correo", $formData["email"]);
+            $stmt->bindParam(":texto", $formData["suggestion"]);
 
             return $stmt->execute();
 
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();
         }
+        unset($_POST["lo_que_sea"] );
     }
 
 
-    public function borrarFormulario($id){
+    public function deletedForm($id){
         try {
             $stmt = $this->conn->prepare("delete from formulario where id=:id");
             $stmt->bindParam(":id", $id);

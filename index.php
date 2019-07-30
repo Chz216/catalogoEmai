@@ -48,6 +48,11 @@ $map->get('contact', addPath('/contacto'), [
     'action' => 'contactAction'
 ]);
 
+$map->post('saveContact', addPath('/contacto'), [
+    'controller' => 'App\Controllers\ContactController',
+    'action' => 'contactAction'
+]);
+
 $matcher = $routerContainer->getMatcher();
 $route = $matcher->match($request);
 
