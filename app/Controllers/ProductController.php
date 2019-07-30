@@ -1,48 +1,40 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+namespace App\Controllers;
 
-/**
- * Description of CProducto
- *
- * @author melissaMay
- */
-class CProducto {
+use App\Models\ProductModel;
 
-    private $modelo;
+class ProductController {
+
+    private $model;
 
     public function __construct() {
-        $this->modelo = new MProducto();
+        $this->model = new ProductModel();
     }
 
-    public function InstrumentosPrincipal() {
-        $instrumentos = $this->modelo->consultarInstrumentosPrincipal();
+    public function getFeatureInstrumens() {
+        $instruments = $this->model->getFeatureInstrumens();
         $acu = "";
-        foreach ($instrumentos as $instrumento) {
+        foreach ($instruments as $instrument) {
             $acu = $acu . '
-                    <div class=" col-lg-4 col-md-12">
-                        <div class="card">
-                            <img src="' . $instrumento["imagen1"] . '" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">' . $instrumento["nombre"] . '</h5>
-                                <p class="card-text">' . $instrumento["descripcion"] . '
-                                </p>
-                               <a href="detalle.php?id_instrumento='.$instrumento["id_instrumento"].'">Ver más</a>
-                            </div>
+                <div class=" col-lg-4 col-md-12">
+                    <div class="card">
+                        <img src="' . $instrument["imagen1"] . '" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">' . $instrument["nombre"] . '</h5>
+                            <p class="card-text">' . $instrument["descripcion"] . '
+                            </p>
+                            <a href="detalle.php?id_instrument='.$instrument["id_instrumento"].'">Ver más</a>
                         </div>
                     </div>
-
-                ';
+                </div>
+            ';
         }
         return $acu;
     }
 
     public function AccesorioPrincipal() {
-        $accesorios = $this->modelo->consultarAccesoriosPrincipal();
+        $accesorios = $this->model->consultarAccesoriosPrincipal();
         $acu = "";
         foreach ($accesorios as $accesorio) {
             $acu = $acu . '
@@ -63,7 +55,7 @@ class CProducto {
     }
 
     public function instrumentosAdmin() {
-        $instrumentos = $this->modelo->consultarInstrumentosAdmin();
+        $instrumentos = $this->model->consultarInstrumentosAdmin();
         $acu = "";
         foreach ($instrumentos as $instrumento) {
             $acu = $acu . '
@@ -90,7 +82,7 @@ class CProducto {
         return $acu;
     }
     public function Instrumentos() {
-        $instrumentos = $this->modelo->consultarInstrumentos();
+        $instrumentos = $this->model->consultarInstrumentos();
         $acu = "";
         foreach ($instrumentos as $instrumento) {
             $acu = $acu . '
@@ -111,7 +103,7 @@ class CProducto {
         return $acu;
     }
     public function Instrumentos2() {
-        $instrumentos = $this->modelo->consultarInstrumentos2();
+        $instrumentos = $this->model->consultarInstrumentos2();
         $acu = "";
         foreach ($instrumentos as $instrumento) {
             $acu = $acu . '
@@ -132,7 +124,7 @@ class CProducto {
         return $acu;
     }
     public function Instrumentos3() {
-        $instrumentos = $this->modelo->consultarInstrumentos3();
+        $instrumentos = $this->model->consultarInstrumentos3();
         $acu = "";
         foreach ($instrumentos as $instrumento) {
             $acu = $acu . '
@@ -153,7 +145,7 @@ class CProducto {
         return $acu;
     }
     public function Filtros() {
-        $filtro = $this->modelo->consultarFiltros();
+        $filtro = $this->model->consultarFiltros();
         $acu = "";
         foreach ($filtro as $filtros) {
             $acu = $acu . '
@@ -220,29 +212,29 @@ class CProducto {
     }
 
     public function instrumento($id_instrumento){
-        $instrumento= $this->modelo->consultarDetalle($id_instrumento);
+        $instrumento= $this->model->consultarDetalle($id_instrumento);
         return $instrumento;
     }
     public function marca($id_instrumento){
-        $marca= $this->modelo->consultarMarca($id_instrumento);
+        $marca= $this->model->consultarMarca($id_instrumento);
         return $marca;
     }
     public function tipo_inst($id_instrumento){
-        $tipo_inst= $this->modelo->consultarTipoInstrumento($id_instrumento);
+        $tipo_inst= $this->model->consultarTipoInstrumento($id_instrumento);
         return $tipo_inst;
     }
          public function subirInstrumento($color,$precio,$descripcion,$imagen,$cantidad){
         copy($color["color"],$precio["precio"],$descripcion["descripcion"],$imagen["tmp_name"]. "../images/".imagen["imagen"],$cantidad["cantidad"]);
-        $this->modelo->insertarProducto($color,$precio,$descripcion,"images/".$imagen["imagen"], $cantidad);
+        $this->model->insertarProducto($color,$precio,$descripcion,"images/".$imagen["imagen"], $cantidad);
         header("Location: panelProductos.php");
     }
       public function editarInstrumento($color,$precio,$descripcion,$imagen,$cantidad,$id_producto){
        copy($color["color"],$precio["precio"],$descripcion["descripcion"],$imagen["tmp_name"]. "../images/".imagen["imagen"],$cantidad["cantidad"],$id_producto["id_producto"]);
-        $this->modelo->editarProducto($color,$precio,$descripcion,"images/".$imagen["imagen"], $cantidad,$id_producto);
+        $this->model->editarProducto($color,$precio,$descripcion,"images/".$imagen["imagen"], $cantidad,$id_producto);
         header("Location: panelProductos.php");
     }
     public function borrarInstrumento($id_instrumento){
-        $this->modelo->borrarProducto($id_instrumento);
+        $this->model->borrarProducto($id_instrumento);
         header("Location: panelProductos.php");
     }
 

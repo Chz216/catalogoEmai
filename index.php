@@ -21,20 +21,30 @@ $request = Zend\Diactoros\ServerRequestFactory::fromGlobals(
 );
 
 $routerContainer = new RouterContainer();
-// Map d elas rutas
+// Map de las rutas
 $map = $routerContainer->getMap();
 
 function addPath($path) {
   return '/catalogoEmai' . $path;
 }
 
-$map->get('inicio', addPath('/'), [
-    'controller' => 'App\controllers\HomeController',
+$map->get('/', addPath('/'), [
+    'controller' => 'App\Controllers\HomeController',
     'action' => 'homeAction'
 ]);
 
-$map->get('contacto', addPath('/contacto'), [
-    'controller' => 'App\controllers\ContactController',
+$map->get('/home', addPath('/inicio'), [
+    'controller' => 'App\Controllers\HomeController',
+    'action' => 'homeAction'
+]);
+
+$map->get('news', addPath('/noticias'), [
+    'controller' => 'App\Controllers\NewsController',
+    'action' => 'newsAction'
+]);
+
+$map->get('contact', addPath('/contacto'), [
+    'controller' => 'App\Controllers\ContactController',
     'action' => 'contactAction'
 ]);
 

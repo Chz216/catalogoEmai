@@ -1,9 +1,9 @@
 <?php
 
+namespace App\Models;
 
-class MFormulario extends BD {
- 
-    
+class MFormulario extends DataBase {
+
     public function consultaraFormulario() {
         try {
             $stmt = $this->conn->prepare("SELECT * FROM formulario");
@@ -13,7 +13,7 @@ class MFormulario extends BD {
             echo "Error: " . $e->getMessage();
         }
     }
-    
+
     public function totalComentarios (){
         try {
            $stmt = $this->conn->prepare("SELECT count(*) as total from formulario");
@@ -40,31 +40,31 @@ class MFormulario extends BD {
             echo "Error: " . $e->getMessage();
         }
     }
-    
+
     public function insertarFormulario($nombre,$correo,$texto) {
         try {
             $stmt = $this->conn->prepare("insert into formulario (nombre,correo,texto) values(:nombre,:correo,:texto)");
             $stmt->bindParam(":nombre", $nombre);
             $stmt->bindParam(":correo", $correo);
             $stmt->bindParam(":texto", $texto);
-            
+
             return $stmt->execute();
-            
+
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();
         }
     }
-    
+
 
     public function borrarFormulario($id){
         try {
             $stmt = $this->conn->prepare("delete from formulario where id=:id");
             $stmt->bindParam(":id", $id);
-            
+
             return $stmt->execute();
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();
         }
     }
-    
+
 }

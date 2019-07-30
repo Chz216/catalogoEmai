@@ -5,7 +5,7 @@ namespace App\Controllers;
 class ContactController {
 
     public function contactAction() {
-        include './app/views/pages/contacto.php';
+        include './app/Views/Pages/contact.php';
     }
 
 }
