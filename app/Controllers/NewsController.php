@@ -13,7 +13,6 @@ class NewsController {
     }
 
     public function newsAction() {
-        $newsController = new NewsController();
         include './app/Views/Pages/news.php';
     }
 

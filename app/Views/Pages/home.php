@@ -13,7 +13,7 @@
 <body>
     <!--Inicia Navbar-->
     <nav class="navbar navbar-expand-lg bg-black">
-        <a class="navbar-brand" href="index.php "><img src="app/Views/assets/images/log_emai.png" alt="navbar" width="110px"></a>
+        <a class="navbar-brand" href="inicio "><img src="app/Views/assets/images/log_emai.png" alt="navbar" width="110px"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNabvar">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -30,7 +30,7 @@
                       <div class="row">
                         <div class="col-sm-3 col-lg-3">
                           <h5>' . $instrumento["categoria"] . '</h5>
-                          <a class="dropdown-item" href="catalogo.php">Percusion</a>
+                          <a class="dropdown-item" href="catalogo">Percusion</a>
                           <a class="dropdown-item" href="#">Cuerda</a>
                           <a class="dropdown-item" href="#">Viento</a>
                           <a class="dropdown-item" href="#">Audio</a>

@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-class ProductModel extends DataBase {
+class ProductsModel extends DataBase {
 
     public function getFeatureInstrumens(){
         try {
@@ -41,14 +41,15 @@ class ProductModel extends DataBase {
         }
     }
 
-    public function consultarInstrumentos() {
+    public function getProducts() {
         try {
-            $stmt = $this->conn->prepare("SELECT tipoinstrumento.nombre,precio,imagen1,id_instrumento FROM instrumento inner join tipoinstrumento on  tipoinstrumento.id_tipo_instrumento="
+            $stmt = $this->conn->prepare("SELECT tipoInstrumento.nombre,precio,imagen1,id_instrumento "
+            . " FROM instrumento inner join tipoInstrumento on  tipoInstrumento.id_tipo_instrumento="
                         . "instrumento.id_instrumento order by id_instrumento asc");
             $stmt->execute();
 
             return $stmt->fetchAll();
-        } catch (PDOException $e) {
+        } catch (\PDOException $e) {
             echo "Error: " . $e->getMessage();
         }
     }

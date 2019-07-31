@@ -1,46 +1,23 @@
-<?php
-include_once './backend/modelo/BD.php';
-include_once './backend/modelo/MProducto.php';
-include_once './backend/controlador/CProducto.php';
-include_once './backend/controlador/CIndex.php';
-$cIndex = new CIndex();
-$cProducto = new CProducto();
-$id_instrumento = $_GET["id_instrumento"];
-$instrumento= $cProducto->instrumento($id_instrumento);
-$marca=$cProducto->marca($id_instrumento);
-$tipo_inst=$cProducto->tipo_inst($id_instrumento);
-
-?>
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
-
-
-
-FALTA 
--->
 <html>
     <head>
         <title>Emai</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-        <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
-        <link href="estilos/estilos.css" rel="stylesheet" type="text/css"/>
+        <link href="app/Views/assets/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+        <link href="app/Views/assets/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+        <link href="app/Views/assets/estilos/estilos.css" rel="stylesheet" type="text/css"/>
         <link href="https://fonts.googleapis.com/css?family=DM+Sans|Poppins&display=swap" rel="stylesheet">
     </head>
     <body>
       <nav class="navbar navbar-expand-lg bg-black">
-            <a class="navbar-brand" href="index.php "><img src="images/log_emai.png" alt="navbar" width="110px"></a>
+            <a class="navbar-brand" href="index.php "><img src="app/Views/assets/images/log_emai.png" alt="navbar" width="110px"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNabvar">
               <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="myNabvar">
               <ul class="navbar-nav mr-4">  
 <!--                 Falta reacomodar -->
-                  <?php echo $cIndex->MenuInstrumentos()?>
               </ul>
                 <form class="navbar-form" role="search">
                   <div class="input-group">
@@ -121,7 +98,7 @@ FALTA
                             <h6 class="lead">TIENDA MUSICAL</h6>    
                         </div>
                         <div class="col-lg-12 col-md-12 text-center">
-                            <img src="images/emai.png" width="120" height="70" alt="">    
+                            <img src="app/Views/assets/images/emai.png" width="120" height="70" alt="">    
                         </div>
                         <div class="col-lg-12 text-center">
                             <h6 class="lead">CONOCENOS</h6>

@@ -53,6 +53,16 @@ $map->post('saveContact', addPath('/contacto'), [
     'action' => 'contactAction'
 ]);
 
+$map->get('product', addPath('/product'), [
+    'controller' => 'App\Controllers\ProductDetailsController',
+    'action' => 'productDetailsAction'
+]);
+
+$map->get('catalogue', addPath('/catalogo'), [
+    'controller' => 'App\Controllers\CatalogueController',
+    'action' => 'catalogueAction'
+]);
+
 $matcher = $routerContainer->getMatcher();
 $route = $matcher->match($request);
 

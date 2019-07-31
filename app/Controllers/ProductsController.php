@@ -2,14 +2,14 @@
 
 namespace App\Controllers;
 
-use App\Models\ProductModel;
+use App\Models\ProductsModel;
 
-class ProductController {
+class ProductsController {
 
     private $model;
 
     public function __construct() {
-        $this->model = new ProductModel();
+        $this->model = new ProductsModel();
     }
 
     public function getFeatureInstrumens() {
