@@ -1,38 +1,30 @@
 <?php
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
-/**
- * Description of MNoticias
- *
- * @author melissaMay
- */
+namespace App\Models;
 
-class MNoticias extends BD {
+class NewsModel extends DataBase {
 
-    public function consultarNoticiasPrincipal(){
+    public function getFeatureNews(){
        try {
             $stmt = $this->conn->prepare("SELECT * FROM noticia order by id_noticia desc limit 4");
             $stmt->execute();
             return $stmt->fetchAll();
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();
-        } 
+        }
     }
-    
-    public function consultarNoticias(){
+
+    public function getNews(){
        try {
             $stmt = $this->conn->prepare("SELECT * FROM noticia order by id_noticia ");
             $stmt->execute();
             return $stmt->fetchAll();
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();
-        } 
+        }
     }
-         public function consultarNoticia($id_noticia) {
+
+    public function consultarNoticia($id_noticia) {
         try {
             $stmt = $this->conn->prepare("select * from noticia where id_noticia=:id_noticia");
             $stmt->bindParam(":id_noticia", $id_noticia);
@@ -46,43 +38,44 @@ class MNoticias extends BD {
             echo "Error: " . $e->getMessage();
         }
     }
-      public function editarNoticia($titulo,$imagen,$descripcion,$id_noticia) {
+
+    public function editarNoticia($titulo,$imagen,$descripcion,$id_noticia) {
         try {
             $stmt = $this->conn->prepare("update noticia set titulo=:titulo, imagen=:imagen, descripcion=:descripcion where id_noticia=:id_noticia");
             $stmt->bindParam(":titulo", $titulo);
             $stmt->bindParam(":imagen", $imagen);
             $stmt->bindParam(":descripcion", $descripcion);
             $stmt->bindParam(":id_noticia", $id_noticia);
-            
+
             return $stmt->execute();
-            
+
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();
         }
     }
-      
+
     public function insertarNoticia($titulo,$imagen,$descripcion) {
         try {
             $stmt = $this->conn->prepare("insert into noticia (titulo,imagen,descripcion) values(:titulo,:imagen,:descripcion)");
-          $stmt->bindParam(":titulo", $titulo);
+            $stmt->bindParam(":titulo", $titulo);
             $stmt->bindParam(":imagen", $imagen);
             $stmt->bindParam(":descripcion", $descripcion);
-            
+
             return $stmt->execute();
-            
+
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();
         }
-    }    
-    
-        public function borrarNoticia($id_noticia){
+    }
+
+    public function borrarNoticia($id_noticia){
         try {
             $stmt = $this->conn->prepare("delete from noticia where id_noticia=:id_noticia");
             $stmt->bindParam(":id_noticia", $id_noticia);
-            
+
             return $stmt->execute();
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();
         }
     }
-        }
+}

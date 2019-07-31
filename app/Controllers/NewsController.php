@@ -1,81 +1,76 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+namespace App\Controllers;
 
-/**
- * Description of CNoticia
- *
- * @author melissaMay
- */
-class CNoticia {
+use App\Models\NewsModel;
 
-    private $modelo;
+class NewsController {
+
+    private $model;
 
     public function __construct() {
-        $this->modelo = new MNoticias();
+        $this->model = new NewsModel();
     }
 
-    public function NoticiaPrincipal() {
-        $noticias = $this->modelo->consultarNoticiasPrincipal();
+    public function newsAction() {
+        $newsController = new NewsController();
+        include './app/Views/Pages/news.php';
+    }
+
+
+    public function getFeatureNews() {
+        $news = $this->model->getFeatureNews();
         $acu = "";
-        foreach ($noticias as $noticia) {
+        foreach ($news as $new) {
             $acu = $acu . '
-                      <div class="col-lg-6 mb-5">
-
+                <div class="col-lg-6 mb-5">
                     <div class="row no-gutters">
-
                         <div class="col-md-4">
-                            <img src="' . $noticia["imagen"] . '" class="card-img" alt="...">
+                            <img src="' . $new["imagen"] . '" class="card-img" alt="...">
                         </div>
                         <div class="col-md-8">
                             <div class="card-body">
-                                <h5 class="card-title">' . $noticia["titulo"] . '</h5>
-                                <p class="card-text"> ' .substr( $noticia["descripcion"],0,50) . '</p>
-                               <a href="Noticia.php?id_noticia='.$noticia["id_noticia"].'">Ver más</a>
+                                <h5 class="card-title">' . $new["titulo"] . '</h5>
+                                <p class="card-text"> ' .substr( $new["descripcion"],0,50) . '</p>
+                               <a href="new.php?id_new='.$new["id_noticia"].'">Ver más</a>
                             </div>
                         </div>
                     </div>
-
-
-                </div> 
-
-                ';
+                </div>
+            ';
         }
         return $acu;
     }
-      //    Falta agregar el tiempo
-    public function Noticias() {
-        $noticias = $this->modelo->consultarNoticias();
+
+    //    Falta agregar el tiempo ***** Desde Base de datos ****
+    public function getNews() {
+        $news = $this->model->getNews();
         $acu = "";
-        foreach ($noticias as $noticia) {
+        foreach ($news as $new) {
             $acu = $acu . '
-                       <div class="col-lg-6 col-md-12">
-                            <div class="card mb-3">
-                                <div class="row no-gutters">
-                                    <div class="col-md-4">
-                                        <img src="' . $noticia["imagen"] . '" class="card-img" alt="...">
-                                    </div>
-                                    <div class="col-md-8">
-                                        <div class="card-body">
-                                            <h5 class="card-title">' . $noticia["titulo"] .'</h5>
-                                            <p class="card-text">' . $noticia["descripcion"] . '</p>                                          
-                                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                                        </div>
-                                    </div>
+                <div class="col-lg-6 col-md-12">
+                    <div class="card mb-3">
+                        <div class="row no-gutters">
+                            <div class="col-md-4">
+                                <img src="' . $new["imagen"] . '" class="card-img" alt="...">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title">' . $new["titulo"] .'</h5>
+                                    <p class="card-text">' . $new["descripcion"] . '</p>
+                                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                                 </div>
                             </div>
                         </div>
-
-                ';
+                    </div>
+                </div>
+            ';
         }
         return $acu;
     }
+
     public function NoticiasAdmin() {
-        $noticias = $this->modelo->consultarNoticias();
+        $noticias = $this->model->consultarNoticias();
         $acu = "";
         foreach ($noticias as $noticia) {
             $acu = $acu . '
@@ -103,23 +98,23 @@ class CNoticia {
         return $acu;
     }
      public function noticia($id_noticia){
-        $noticia= $this->modelo->consultarNoticia($id_noticia);
+        $noticia= $this->model->consultarNoticia($id_noticia);
         return $noticia;
     }
         public function editarNoticia($titulo, $imagen, $descripcion,$id_noticia) {
         copy($titulo["titulo"],$imagen["tmp_name"]. "../images/" . $imagen["imagen"],$descripcion["descripcion"]);
-        $this->modelo->editarNoticia($titulo,"images/" . $imagen["imagen"], $descripcion,$id_noticia);
+        $this->model->editarNoticia($titulo,"images/" . $imagen["imagen"], $descripcion,$id_noticia);
         header("Location: panelEventos.php");
     }
        public function borrarNoticia($id_noticia){
-        $this->modelo->borrarNoticia($id_noticia);
+        $this->model->borrarNoticia($id_noticia);
         header("Location: panelEventos.php");
     }
         public function subirNoticia($titulo, $imagen, $descripcion) {
 
         copy($titulo["titulo"],$imagen["tmp_name"]. "../images/" . $imagen["imagen"],$descripcion["descripcion"]);
-        $this->modelo->insertarNoticia($titulo, "images/" . $imagen["imagen"],$descripcion);
+        $this->model->insertarNoticia($titulo, "images/" . $imagen["imagen"],$descripcion);
         header("Location: panelEventos.php");
     }
-    
+
 }

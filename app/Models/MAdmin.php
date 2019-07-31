@@ -1,17 +1,7 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+class MAdmin  extends DataBase {
 
-/**
- * Description of MAdmin
- *
- * @author melissaMay
- */
-class MAdmin  extends BD{
     public function consultarUsuario($usuario,$password){
         try {
             $pass= md5($password);
@@ -26,6 +16,7 @@ class MAdmin  extends BD{
             return null;
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();
-        }    
+        }
     }
+
 }

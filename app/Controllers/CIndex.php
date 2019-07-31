@@ -1,24 +1,19 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+namespace App\Controllers;
 
-/**
- * Description of CIndex
- *
- * @author melissaMay
- */
+use App\Models\ProductModel;
+
 class CIndex {
-     private $modelo;
+
+    private $modelo;
 
     public function __construct() {
-        $this->modelo = new MProducto();
+        $this->modelo = new ProductModel();
     }
-    
-     public function MenuInstrumentos() {
+
+    public function MenuInstrumentos() {
+
     $instrumentos = $this->modelo->TipoInstrumento();
         $acu = "";
      foreach ($instrumentos as $instrumento) {
