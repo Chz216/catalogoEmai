@@ -25,7 +25,7 @@ $routerContainer = new RouterContainer();
 $map = $routerContainer->getMap();
 
 function addPath($path) {
-  return '/catalogoEmai' . $path;
+    return '/catalogoEmai' . $path;
 }
 
 $map->get('/', addPath('/'), [
@@ -35,7 +35,7 @@ $map->get('/', addPath('/'), [
 
 $map->get('/home', addPath('/inicio'), [
     'controller' => 'App\Controllers\HomeController',
-    'action' => 'homeAction'
+'action' => 'homeAction'
 ]);
 
 $map->get('news', addPath('/noticias'), [
@@ -53,14 +53,14 @@ $map->post('saveContact', addPath('/contacto'), [
     'action' => 'contactAction'
 ]);
 
-$map->get('product', addPath('/product'), [
-    'controller' => 'App\Controllers\ProductDetailsController',
-    'action' => 'productDetailsAction'
-]);
-
 $map->get('catalogue', addPath('/catalogo'), [
     'controller' => 'App\Controllers\CatalogueController',
     'action' => 'catalogueAction'
+]);
+
+$map->get('product', addPath('/producto/{id}'), [
+    'controller' => 'App\Controllers\ProductDetailsController',
+    'action' => 'productDetailsAction'
 ]);
 
 $matcher = $routerContainer->getMatcher();

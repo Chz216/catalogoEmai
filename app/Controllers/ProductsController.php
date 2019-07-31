@@ -24,7 +24,7 @@ class ProductsController {
                             <h5 class="card-title">' . $instrument["nombre"] . '</h5>
                             <p class="card-text">' . $instrument["descripcion"] . '
                             </p>
-                            <a href="detalle.php?id_instrument='.$instrument["id_instrumento"].'">Ver más</a>
+                            <a href="producto/'.$instrument["id_instrumento"].'">Ver más</a>
                         </div>
                     </div>
                 </div>
@@ -210,20 +210,8 @@ class ProductsController {
         }
         return $acu;
     }
-
-    public function instrumento($id_instrumento){
-        $instrumento= $this->model->consultarDetalle($id_instrumento);
-        return $instrumento;
-    }
-    public function marca($id_instrumento){
-        $marca= $this->model->consultarMarca($id_instrumento);
-        return $marca;
-    }
-    public function tipo_inst($id_instrumento){
-        $tipo_inst= $this->model->consultarTipoInstrumento($id_instrumento);
-        return $tipo_inst;
-    }
-         public function subirInstrumento($color,$precio,$descripcion,$imagen,$cantidad){
+    
+    public function subirInstrumento($color,$precio,$descripcion,$imagen,$cantidad){
         copy($color["color"],$precio["precio"],$descripcion["descripcion"],$imagen["tmp_name"]. "../images/".imagen["imagen"],$cantidad["cantidad"]);
         $this->model->insertarProducto($color,$precio,$descripcion,"images/".$imagen["imagen"], $cantidad);
         header("Location: panelProductos.php");

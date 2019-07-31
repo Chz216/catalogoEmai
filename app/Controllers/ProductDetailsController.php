@@ -2,29 +2,34 @@
 
 namespace App\Controllers;
 
-use App\Controllers\ProductsController;
-
-
-// include_once './backend/controlador/CProducto.php';
-// include_once './backend/controlador/CIndex.php';
-// $cIndex = new CIndex();
-
+use App\Models\ProductsModel;
 
 class ProductDetailsController {
 
     private $model;
 
     public function __construct() {
-        // $this->model = new ProductsModel();
+        $this->model = new ProductsModel();
     }
 
-    public function productDetailsAction() {
-        $cProducto = new ProductsController();
-        // $id_instrumento = $_GET["id_instrumento"];
-        // $instrumento= $cProducto->instrumento($id_instrumento);
-        // $marca=$cProducto->marca($id_instrumento);
-        // $tipo_inst=$cProducto->tipo_inst($id_instrumento);
+    public function productDetailsAction($request) {
+        $idProduct = substr($_GET['route'], 9);
         include './app/Views/Pages/productDetails.php';
+    }
+
+    public function getProductById($idProduct){
+        $product= $this->model->getProductById($idProduct);
+        return $product;
+    }
+
+    public function getBrandById($idProduct){
+        $brand= $this->model->getBrandById($idProduct);
+        return $brand;
+    }
+
+    public function getProductType($idProduct){
+        $productType= $this->model->getProductType($idProduct);
+        return $productType;
     }
 
 }
