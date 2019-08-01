@@ -63,6 +63,11 @@ $map->get('product', addPath('/producto/{id}'), [
     'action' => 'productDetailsAction'
 ]);
 
+$map->get('new', addPath('/noticia/{id}'), [
+    'controller' => 'App\Controllers\NewsController',
+    'action' => 'newDetailsAction'
+]);
+
 $matcher = $routerContainer->getMatcher();
 $route = $matcher->match($request);
 

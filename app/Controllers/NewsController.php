@@ -16,6 +16,10 @@ class NewsController {
         include './app/Views/Pages/news.php';
     }
 
+    public function newDetailsAction() {
+        $idNew = substr($_GET['route'], 8);
+        include './app/Views/Pages/newDetails.php';
+    }
 
     public function getFeatureNews() {
         $news = $this->model->getFeatureNews();
@@ -31,7 +35,7 @@ class NewsController {
                             <div class="card-body">
                                 <h5 class="card-title">' . $new["titulo"] . '</h5>
                                 <p class="card-text"> ' .substr( $new["descripcion"],0,50) . '</p>
-                               <a href="new.php?id_new='.$new["id_noticia"].'">Ver más</a>
+                               <a href="noticia/'.$new["id_noticia"].'">Ver más</a>
                             </div>
                         </div>
                     </div>
@@ -68,6 +72,11 @@ class NewsController {
         return $acu;
     }
 
+    public function getNewById($idNew){
+        $new = $this->model->getNewById($idNew);
+        return $new;
+    }
+
     public function NoticiasAdmin() {
         $noticias = $this->model->consultarNoticias();
         $acu = "";
@@ -96,10 +105,7 @@ class NewsController {
         }
         return $acu;
     }
-     public function noticia($id_noticia){
-        $noticia= $this->model->consultarNoticia($id_noticia);
-        return $noticia;
-    }
+
         public function editarNoticia($titulo, $imagen, $descripcion,$id_noticia) {
         copy($titulo["titulo"],$imagen["tmp_name"]. "../images/" . $imagen["imagen"],$descripcion["descripcion"]);
         $this->model->editarNoticia($titulo,"images/" . $imagen["imagen"], $descripcion,$id_noticia);

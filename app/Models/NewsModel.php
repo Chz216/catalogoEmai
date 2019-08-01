@@ -24,15 +24,14 @@ class NewsModel extends DataBase {
         }
     }
 
-    public function consultarNoticia($id_noticia) {
+    public function getNewById($idNew) {
         try {
             $stmt = $this->conn->prepare("select * from noticia where id_noticia=:id_noticia");
-            $stmt->bindParam(":id_noticia", $id_noticia);
+            $stmt->bindParam(":id_noticia", $idNew);
             $stmt->execute();
             foreach ($stmt->fetchAll() as $reg) {
                 return $reg;
             }
-
             return null;
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();

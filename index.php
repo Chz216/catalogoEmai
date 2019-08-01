@@ -90,7 +90,7 @@
                   <a class="nav-link" href="/catalogoEmai/noticias">Noticias</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/catalogoEmai/contacto">Contactanos</a>
+                    <a class="nav-link" href="/catalogoEmai/contacto">Contáctanos</a>
                 </li>
             </ul>
             <form class="navbar-form" role="search">
@@ -131,19 +131,23 @@
                     </div>
                     <div class="col-lg-4 text-center">
                         <H6 class="lead">Contáctanos</H6>
-
-                        <p><a href="https://www.facebook.com/tiendaemai"><span class="fa fa-facebook-square mr-2" style='color:white;'></span></a>Facebook</p>
-
-                        <span class="fa fa-phone mr-2" ></span><a href="tel:+340 38-4-34-67" style='color:white;'>38-4-34-67</a>
-                        <p><span class="fa fa-map-marker mr-2"></span>Centro Tehuacan</p>
+                        <p>
+                          <a  style='color:white;' href="https://www.facebook.com/tiendaemai">
+                            <span class="fa fa-facebook-square mr-2"></span>
+                            <span>Facebook</span>
+                          </a>
+                        </p>
+                        <i class="fa fa-phone mr-2" ></i>
+                        <a href="tel:+340 38-4-34-67" style='color:white;'>38-4-34-67</a>
+                        <p><span class="fa fa-map-marker mr-2"></span>Centro Tehuacán Puebla</p>
                     </div>
                 </div>
             </div>
         </div>
     </footer>
 
-<script src="<?php echo $localUrl; ?>assets/js/jquery.js" type="text/javascript"></script>
-<script src="<?php echo $localUrl; ?>assets/js/bootstrap.min.js" type="text/javascript"></script>
-<script src="<?php echo $localUrl; ?>assets/scripts/scripts.js" type="text/javascript"></script>
+    <script src="<?php echo $localUrl; ?>assets/js/jquery.js" type="text/javascript"></script>
+    <script src="<?php echo $localUrl; ?>assets/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="<?php echo $localUrl; ?>assets/scripts/scripts.js" type="text/javascript"></script>
 </body>
 </html>
