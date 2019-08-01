@@ -68,6 +68,11 @@ $map->get('new', addPath('/noticia/{id}'), [
     'action' => 'newDetailsAction'
 ]);
 
+$map->get('search', addPath('/buscar/{text}'), [
+    'controller' => 'App\Controllers\SearchController',
+    'action' => 'searchAction'
+]);
+
 $matcher = $routerContainer->getMatcher();
 $route = $matcher->match($request);
 

@@ -97,9 +97,10 @@
                 <div class="input-group">
                 <input type="text" class="form-control" placeholder="Buscar Productos...">
                 <div class="input-group-append">
-                    <button class="btn btn-danger" type="button">
+                  
+                    <a class="btn btn-danger" type="button" href="/catalogoEmai/buscar/fdf">
                     <i class="fa fa-search"></i>
-                    </button>
+                    </a>
                 </div>
                 </div>
             </form>
