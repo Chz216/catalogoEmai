@@ -24,7 +24,7 @@ class ProductsController {
                             <h5 class="card-title">' . $instrument["nombre"] . '</h5>
                             <p class="card-text">' . $instrument["descripcion"] . '
                             </p>
-                            <a href="producto/'.$instrument["id_instrumento"].'">Ver más</a>
+                            <a class="card-button" href="producto/'.$instrument["id_instrumento"].'">Ver más</a>
                         </div>
                     </div>
                 </div>

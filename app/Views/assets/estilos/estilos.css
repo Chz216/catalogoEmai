@@ -179,7 +179,7 @@ footer{
     color: white;
     transition: all .5s
 }
-.productos-inicio a, .recitales-inicio a {
+.card-button {
      display: inline-block;
     margin: 5px;
     padding: 10px;
@@ -191,7 +191,7 @@ footer{
     transition: all .5s
     
 }
-.productos-inicio a:hover {
+.card-button:hover {
     background-color: #dc3545;
     color: white;
     transition: all .5s
