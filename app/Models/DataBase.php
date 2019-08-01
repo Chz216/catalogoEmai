@@ -5,7 +5,7 @@ namespace App\Models;
 class DataBase {
 
     private $servername = "localhost";
-    private $database = "emai";
+    private $database = "emaidb";
     private $user = "root";
     private $password = "";
     protected $conn;

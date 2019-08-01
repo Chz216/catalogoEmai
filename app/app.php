@@ -9,80 +9,19 @@ error_reporting(E_ALL);
 
 require_once 'vendor/autoload.php';
 
-//  Libreria para las rutas
-use Aura\Router\RouterContainer;
+use App\Routes\IndexRoutes;
 
-$request = Zend\Diactoros\ServerRequestFactory::fromGlobals(
-    $_SERVER,
-    $_GET,
-    $_POST,
-    $_COOKIE,
-    $_FILES
-);
+class App {
+    
+    public $localUrl = "http://localhost/catalogoEmai/app/Views/";
 
-$routerContainer = new RouterContainer();
-// Map de las rutas
-$map = $routerContainer->getMap();
+    public function getRoutes() {
+        $indexRoutes = new IndexRoutes();   
+        $indexRoutes->getRoutes();
+    }
 
-function addPath($path) {
-    return '/catalogoEmai' . $path;
-}
+    public function getMenu() {
+        include 'app/Views/Shared/menu.php';
+    }
 
-$map->get('/', addPath('/'), [
-    'controller' => 'App\Controllers\HomeController',
-    'action' => 'homeAction'
-]);
-
-$map->get('/home', addPath('/inicio'), [
-    'controller' => 'App\Controllers\HomeController',
-'action' => 'homeAction'
-]);
-
-$map->get('news', addPath('/noticias'), [
-    'controller' => 'App\Controllers\NewsController',
-    'action' => 'newsAction'
-]);
-
-$map->get('contact', addPath('/contacto'), [
-    'controller' => 'App\Controllers\ContactController',
-    'action' => 'contactAction'
-]);
-
-$map->post('saveContact', addPath('/contacto'), [
-    'controller' => 'App\Controllers\ContactController',
-    'action' => 'contactAction'
-]);
-
-$map->get('catalogue', addPath('/catalogo'), [
-    'controller' => 'App\Controllers\CatalogueController',
-    'action' => 'catalogueAction'
-]);
-
-$map->get('product', addPath('/producto/{id}'), [
-    'controller' => 'App\Controllers\ProductDetailsController',
-    'action' => 'productDetailsAction'
-]);
-
-$map->get('new', addPath('/noticia/{id}'), [
-    'controller' => 'App\Controllers\NewsController',
-    'action' => 'newDetailsAction'
-]);
-
-$map->get('search', addPath('/buscar/{text}'), [
-    'controller' => 'App\Controllers\SearchController',
-    'action' => 'searchAction'
-]);
-
-$matcher = $routerContainer->getMatcher();
-$route = $matcher->match($request);
-
-if (!$route) {
-    echo 'No route';
-} else {
-    $handlerData = $route->handler;
-    $controllerName = $handlerData['controller'];
-    $actionName = $handlerData['action'];
-
-    $controller = new $controllerName;
-    $controller->$actionName($request);
 }
