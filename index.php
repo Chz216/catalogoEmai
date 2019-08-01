@@ -1,3 +1,4 @@
+<?php $localUrl = "http://localhost/catalogoEmai/app/Views/" ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,24 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>CatalogoEmai</title>
-    
-    <link href="app/Views/assets/css/bootstrap.css" rel="stylesheet" type="text/css"/>
-    <link href="app/Views/assets/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
-    <link href="app/Views/assets/estilos/estilos.css" rel="stylesheet" type="text/css"/>
+    <link href="<?php echo $localUrl; ?>assets/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+    <link href="<?php echo $localUrl; ?>assets/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+    <link href="<?php echo $localUrl; ?>assets/estilos/estilos.css" rel="stylesheet" type="text/css"/>
     <link href="https://fonts.googleapis.com/css?family=DM+Sans|Poppins&display=swap" rel="stylesheet">
-    <base href="./">
 </head>
 <body>
     <!--Inicia Navbar-->
     <nav class="navbar navbar-expand-lg bg-black">
-        <a class="navbar-brand" href="inicio "><img src="app/Views/assets/images/log_emai.png" alt="navbar" width="110px"></a>
+        <a class="navbar-brand" href="/catalogoEmai/inicio ">
+          <img src="<?php echo $localUrl; ?>assets/images/log_emai.png" alt="navbar" width="110px">
+        </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNabvar">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse justify-content-end" id="myNabvar">
             <ul class="navbar-nav mr-4">
             <li class="nav-item">
-                  <a class="nav-link" href="inicio">Inicio</span></a>
+                  <a class="nav-link" href="/catalogoEmai/inicio">Inicio</span></a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="mega-menu" data-toggle="dropdown">
@@ -32,7 +33,7 @@
                       <div class="row">
                         <div class="col-sm-3 col-lg-3">
                           <h5>' . $instrumento["categoria"] . '</h5>
-                          <a class="dropdown-item" href="catalogo">Percusion</a>
+                          <a class="dropdown-item" href="/catalogoEmai/catalogo">Percusion</a>
                           <a class="dropdown-item" href="#">Cuerda</a>
                           <a class="dropdown-item" href="#">Viento</a>
                           <a class="dropdown-item" href="#">Audio</a>
@@ -86,10 +87,10 @@
                     </div>
                   </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="noticias">Noticias</a>
+                  <a class="nav-link" href="/catalogoEmai/noticias">Noticias</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="contacto">Contactanos</a>
+                    <a class="nav-link" href="/catalogoEmai/contacto">Contactanos</a>
                 </li>
             </ul>
             <form class="navbar-form" role="search">
@@ -117,7 +118,7 @@
                             <h6 class="lead">TIENDA MUSICAL</h6>    
                         </div>
                         <div class="col-lg-12 col-md-12 text-center">
-                            <img src="app/Views/assets/images/emai.png" width="120" height="70" alt="">    
+                            <img src="<?php echo $localUrl; ?>assets/images/emai.png" width="120" height="70" alt="">    
                         </div>
                         <div class="col-lg-12 text-center">
                             <h6 class="lead">CONÓCENOS</h6>
@@ -141,8 +142,8 @@
         </div>
     </footer>
 
-<script src="app/Views/assets/js/jquery.js" type="text/javascript"></script>
-<script src="app/Views/assets/js/bootstrap.min.js" type="text/javascript"></script>
-<script src="app/Views/assets/scripts/scripts.js" type="text/javascript"></script>
+<script src="<?php echo $localUrl; ?>assets/js/jquery.js" type="text/javascript"></script>
+<script src="<?php echo $localUrl; ?>assets/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="<?php echo $localUrl; ?>assets/scripts/scripts.js" type="text/javascript"></script>
 </body>
 </html>
