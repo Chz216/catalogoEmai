@@ -17,30 +17,6 @@ class ProductsModel extends DataBase {
         }
     }
 
-    public function consultarAccesoriosPrincipal(){
-       try {
-            $stmt = $this->conn->prepare("SELECT * FROM accesorio order by id desc limit 3");
-            $stmt->execute();
-
-            return $stmt->fetchAll();
-        } catch (PDOException $e) {
-            echo "Error: " . $e->getMessage();
-        }
-    }
-
-
-    public function Tipoinstrumento(){
-     try {
-            $stmt = $this->conn->prepare("SELECT tipoinstrumento.id_tipo_instrumento,id_categoria,categoria from categoria inner join tipoinstrumento "
-                    . "on tipoinstrumento.id_tipo_instrumento=categoria.id_categoria group by id_tipo_instrumento");
-            $stmt->execute();
-
-            return $stmt->fetchAll();
-        } catch (PDOException $e) {
-            echo "Error: " . $e->getMessage();
-        }
-    }
-
     public function getProducts() {
         try {
             $stmt = $this->conn->prepare("SELECT subcategory.subcategoryName, products.productId, ".
@@ -55,10 +31,64 @@ class ProductsModel extends DataBase {
         }
     }
 
-     public function consultarInstrumentos2() {
+    public function getProductById($productId) {
         try {
-            $stmt = $this->conn->prepare("SELECT tipoinstrumento.nombre,precio,imagen1,id_instrumento FROM instrumento inner join tipoinstrumento on  tipoinstrumento.id_tipo_instrumento="
-                    . "instrumento.id_instrumento where id_instrumento>=25 order by id_instrumento asc limit 24");
+            $stmt = $this->conn->prepare("SELECT products.productId, subcategory.subcategoryName, ".
+            " productName, productPrice, productModel, productDescription, imagesProducts.imageProductUri, ".
+            " brands.brandName FROM products INNER JOIN imagesProducts ON imagesProducts.productId = " . 
+            " products.productId INNER JOIN brands ON brands.brandId = products.brandId INNER JOIN " . 
+            " subcategory ON subcategory.subcategoryId = products.subcategoryId WHERE products.productId =:productId GROUP BY products.productId");
+            $stmt->bindParam(":productId", $productId);
+            $stmt->execute();
+            foreach ($stmt->fetchAll() as $reg) {
+                return $reg;
+            }
+            return null;
+        } catch (\PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
+    }
+
+    public function getProductImages($productId) {
+        try {
+            $stmt = $this->conn->prepare("SELECT * FROM imagesProducts WHERE productId =:productId");
+            $stmt->bindParam(":productId", $productId);
+            $stmt->execute();
+
+            return $stmt->fetchAll();
+        } catch (\PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
+    }
+
+    public function consultarAccesoriosPrincipal(){
+       try {
+            $stmt = $this->conn->prepare("SELECT * FROM accesorio order by id desc limit 3");
+            $stmt->execute();
+
+            return $stmt->fetchAll();
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
+    }
+
+
+    public function Tipoinstrumento(){
+        try {
+            $stmt = $this->conn->prepare("SELECT tipoinstrumento.id_tipo_instrumento,id_categoria,categoria from categoria inner join tipoinstrumento "
+            . "on tipoinstrumento.id_tipo_instrumento=categoria.id_categoria group by id_tipo_instrumento");
+            $stmt->execute();
+
+            return $stmt->fetchAll();
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
+    }
+
+    public function consultarInstrumentos2() {
+        try {
+             $stmt = $this->conn->prepare("SELECT tipoinstrumento.nombre,precio,imagen1,id_instrumento FROM instrumento inner join tipoinstrumento on  tipoinstrumento.id_tipo_instrumento="
+             . "instrumento.id_instrumento where id_instrumento>=25 order by id_instrumento asc limit 24");
             $stmt->execute();
 
             return $stmt->fetchAll();
@@ -89,19 +119,6 @@ class ProductsModel extends DataBase {
         }
     }
 
-    public function getProductById($idProduct) {
-        try {
-            $stmt = $this->conn->prepare("SELECT * FROM instrumento where id_instrumento=:id_instrumento");
-             $stmt->bindParam(":id_instrumento", $idProduct);
-            $stmt->execute();
-            foreach ($stmt->fetchAll() as $reg) {
-                return $reg;
-            }
-            return null;
-        } catch (\PDOException $e) {
-            echo "Error: " . $e->getMessage();
-        }
-    }
 
     public function categoria(){
         try {
