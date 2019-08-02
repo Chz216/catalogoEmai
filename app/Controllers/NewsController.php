@@ -29,13 +29,13 @@ class NewsController {
                 <div class="col-lg-6 mb-5">
                     <div class="row no-gutters">
                         <div class="col-md-4">
-                            <img src="' . $new["imagen"] . '" class="card-img" alt="...">
+                            <img src="' . $new["imageEventUri"] . '" class="card-img" alt="...">
                         </div>
                         <div class="col-md-8">
                             <div class="card-body">
-                                <h5 class="card-title">' . $new["titulo"] . '</h5>
-                                <p class="card-text"> ' .substr( $new["descripcion"],0,50) . '</p>
-                               <a class="card-button" href="noticia/'.$new["id_noticia"].'">Ver más</a>
+                                <h5 class="card-title">' . $new["eventName"] . '</h5>
+                                <p class="card-text"> ' .substr( $new["eventDescription"],0,50) . '</p>
+                               <a class="card-button" href="noticia/'.$new["eventId"].'">Ver más</a>
                             </div>
                         </div>
                     </div>

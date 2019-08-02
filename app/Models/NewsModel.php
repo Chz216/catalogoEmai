@@ -6,7 +6,7 @@ class NewsModel extends DataBase {
 
     public function getFeatureNews(){
        try {
-            $stmt = $this->conn->prepare("SELECT * FROM noticia order by id_noticia desc limit 4");
+            $stmt = $this->conn->prepare("SELECT events.eventId, eventName, eventDescription, imagesEvents.imageEventUri FROM events INNER JOIN imagesEvents ON imagesEvents.eventId = events.eventId GROUP BY events.eventId DESC LIMIT 4");
             $stmt->execute();
             return $stmt->fetchAll();
         } catch (PDOException $e) {

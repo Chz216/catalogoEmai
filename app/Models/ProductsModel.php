@@ -6,10 +6,10 @@ class ProductsModel extends DataBase {
 
     public function getFeatureInstrumens(){
         try {
-            $stmt = $this->conn->prepare("SELECT tipoInstrumento.nombre,imagen1,descripcion," .
-             " id_instrumento FROM instrumento inner join tipoInstrumento ".
-             "on  tipoInstrumento.id_tipo_instrumento= instrumento.id_instrumento ".
-             " order by id_instrumento asc limit 3");
+            $stmt = $this->conn->prepare("SELECT subcategory.subcategoryName, products.productId, productName, " .
+                " productDescription, imagesProducts.imageProductUri FROM products INNER JOIN imagesProducts " .
+                " ON imagesProducts.productId = products.productId INNER JOIN subcategory ON " .
+                " subcategory.subcategoryId = products.subcategoryId GROUP BY productId DESC LIMIT 3");
             $stmt->execute();
             return $stmt->fetchAll();
         } catch (\PDOException $e) {
@@ -29,10 +29,10 @@ class ProductsModel extends DataBase {
     }
 
 
-    public function TipoInstrumento(){
+    public function Tipoinstrumento(){
      try {
-            $stmt = $this->conn->prepare("SELECT tipoInstrumento.id_tipo_instrumento,id_categoria,categoria from categoria inner join tipoInstrumento "
-                    . "on tipoInstrumento.id_tipo_instrumento=categoria.id_categoria group by id_tipo_instrumento");
+            $stmt = $this->conn->prepare("SELECT tipoinstrumento.id_tipo_instrumento,id_categoria,categoria from categoria inner join tipoinstrumento "
+                    . "on tipoinstrumento.id_tipo_instrumento=categoria.id_categoria group by id_tipo_instrumento");
             $stmt->execute();
 
             return $stmt->fetchAll();
@@ -43,8 +43,8 @@ class ProductsModel extends DataBase {
 
     public function getProducts() {
         try {
-            $stmt = $this->conn->prepare("SELECT tipoInstrumento.nombre,precio,imagen1,id_instrumento "
-            . " FROM instrumento inner join tipoInstrumento on  tipoInstrumento.id_tipo_instrumento="
+            $stmt = $this->conn->prepare("SELECT tipoinstrumento.nombre,precio,imagen1,id_instrumento "
+            . " FROM instrumento inner join tipoinstrumento on  tipoinstrumento.id_tipo_instrumento="
                         . "instrumento.id_instrumento order by id_instrumento asc");
             $stmt->execute();
 
@@ -56,7 +56,7 @@ class ProductsModel extends DataBase {
 
      public function consultarInstrumentos2() {
         try {
-            $stmt = $this->conn->prepare("SELECT tipoInstrumento.nombre,precio,imagen1,id_instrumento FROM instrumento inner join tipoInstrumento on  tipoInstrumento.id_tipo_instrumento="
+            $stmt = $this->conn->prepare("SELECT tipoinstrumento.nombre,precio,imagen1,id_instrumento FROM instrumento inner join tipoinstrumento on  tipoinstrumento.id_tipo_instrumento="
                     . "instrumento.id_instrumento where id_instrumento>=25 order by id_instrumento asc limit 24");
             $stmt->execute();
 
@@ -68,7 +68,7 @@ class ProductsModel extends DataBase {
 
     public function consultarInstrumentos3() {
         try {
-            $stmt = $this->conn->prepare("SELECT tipoInstrumento.nombre,precio,imagen1,id_instrumento FROM instrumento inner join tipoInstrumento on  tipoInstrumento.id_tipo_instrumento="
+            $stmt = $this->conn->prepare("SELECT tipoinstrumento.nombre,precio,imagen1,id_instrumento FROM instrumento inner join tipoinstrumento on  tipoinstrumento.id_tipo_instrumento="
                     . "instrumento.id_instrumento where id_instrumento>=49 order by id_instrumento asc limit 24");
             $stmt->execute();
             return $stmt->fetchAll();
@@ -129,7 +129,7 @@ class ProductsModel extends DataBase {
 
     public function getProductType($idProduct) {
         try {
-            $stmt = $this->conn->prepare("select nombre from tipoInstrumento inner join instrumento on tipoInstrumento.id_tipo_instrumento=instrumento.id_instrumento"
+            $stmt = $this->conn->prepare("select nombre from tipoinstrumento inner join instrumento on tipoinstrumento.id_tipo_instrumento=instrumento.id_instrumento"
                     . " where id_instrumento=:id_instrumento");
              $stmt->bindParam(":id_instrumento", $idProduct);
             $stmt->execute();

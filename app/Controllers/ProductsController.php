@@ -19,12 +19,12 @@ class ProductsController {
             $acu = $acu . '
                 <div class=" col-lg-4 col-md-12">
                     <div class="card">
-                        <img src="' . $instrument["imagen1"] . '" class="card-img-top" alt="...">
+                        <img src="' . $instrument["imageProductUri"] . '" class="card-img-top" alt="...">
                         <div class="card-body">
-                            <h5 class="card-title">' . $instrument["nombre"] . '</h5>
-                            <p class="card-text">' . $instrument["descripcion"] . '
+                            <h5 class="card-title">' . $instrument["productName"] . '</h5>
+                            <p class="card-text">' . $instrument["productDescription"] . '
                             </p>
-                            <a class="card-button" href="producto/'.$instrument["id_instrumento"].'">Ver más</a>
+                            <a class="card-button" href="producto/'.$instrument["productId"].'">Ver más</a>
                         </div>
                     </div>
                 </div>
