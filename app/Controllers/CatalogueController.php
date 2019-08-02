@@ -34,7 +34,7 @@ class CatalogueController {
                             <h5 class="card-title">' . $product["productName"] . '</h5>
                             <span>Precio</span>
                             <p>'.$product["productPrice"].'</p>
-                            <a href="detalle.php?id_instrumento='.$product["productId"].'">Ver más</a>
+                            <a href="/catalogoEmai/producto/'.$product["productId"].'">Ver más</a>
                         </div>
                     </div>
                 </div>

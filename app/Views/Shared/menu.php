@@ -17,27 +17,7 @@
                   </a>
                   <div class="dropdown-menu" aria-labelledby="mega-menu">
                     <div class="row">
-                      <div class="col-sm-3 col-lg-3">
-                        <h5>Aire</h5>
-                        <a class="dropdown-item" href="/catalogoEmai/catalogo">Percusion</a>
-                        <a class="dropdown-item" href="#">Cuerda</a>
-                        <a class="dropdown-item" href="#">Viento</a>
-                        <a class="dropdown-item" href="#">Audio</a>
-                      </div>
-                      <div class="col-sm-3 col-lg-3">
-                          <h5>Percución</h5>
-                        <a href="#" class="dropdown-item">Percusion</a>
-                        <a href="#" class="dropdown-item">Cuerda</a>
-                        <a href="#" class="dropdown-item">Viento</a>
-                        <a href="#" class="dropdown-item">Audio</a>
-                      </div>
-                      <div class="col-sm-3 col-lg-3">
-                          <h5>Cuerda</h5>
-                        <a href="#" class="dropdown-item">Percusion</a>
-                        <a href="#" class="dropdown-item">Cuerda</a>
-                        <a href="#" class="dropdown-item">Viento</a>
-                        <a href="#" class="dropdown-item">Audio</a>
-                      </div>
+                      <?php echo $menuController->getCategoriesMenu(); ?>
                     </div>
                   </div>
                 </li>

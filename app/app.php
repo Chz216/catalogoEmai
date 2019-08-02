@@ -10,17 +10,19 @@ error_reporting(E_ALL);
 require_once 'vendor/autoload.php';
 
 use App\Routes\IndexRoutes;
+use App\Controllers\MenuController;
 
 class App {
     
     public $localUrl = "http://localhost/catalogoEmai/app/Views/";
 
     public function getRoutes() {
-        $indexRoutes = new IndexRoutes();   
+        $indexRoutes = new IndexRoutes();
         $indexRoutes->getRoutes();
     }
 
     public function getMenu() {
+        $menuController = new MenuController;
         include 'app/Views/Shared/menu.php';
     }
 
