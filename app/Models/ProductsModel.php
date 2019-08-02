@@ -43,9 +43,10 @@ class ProductsModel extends DataBase {
 
     public function getProducts() {
         try {
-            $stmt = $this->conn->prepare("SELECT tipoinstrumento.nombre,precio,imagen1,id_instrumento "
-            . " FROM instrumento inner join tipoinstrumento on  tipoinstrumento.id_tipo_instrumento="
-                        . "instrumento.id_instrumento order by id_instrumento asc");
+            $stmt = $this->conn->prepare("SELECT subcategory.subcategoryName, products.productId, ".
+            "productName, productDescription, productPrice, imagesProducts.imageProductUri FROM products ".
+            " INNER JOIN imagesProducts ON imagesProducts.productId = products.productId " .
+            " INNER JOIN subcategory ON subcategory.subcategoryId = products.subcategoryId GROUP BY productId ASC");
             $stmt->execute();
 
             return $stmt->fetchAll();
