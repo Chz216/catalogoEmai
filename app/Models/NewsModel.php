@@ -26,8 +26,8 @@ class NewsModel extends DataBase {
 
     public function getNewById($idNew) {
         try {
-            $stmt = $this->conn->prepare("select * from noticia where id_noticia=:id_noticia");
-            $stmt->bindParam(":id_noticia", $idNew);
+            $stmt = $this->conn->prepare("SELECT events.eventId, eventName, eventDescription, imagesEvents.imageEventUri FROM events INNER JOIN imagesEvents ON imagesEvents.eventId = events.eventId WHERE events.eventId =:eventId GROUP BY events.eventId");
+            $stmt->bindParam(":eventId", $idNew);
             $stmt->execute();
             foreach ($stmt->fetchAll() as $reg) {
                 return $reg;
