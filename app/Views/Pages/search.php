@@ -5,7 +5,7 @@
 
             <div class="col-lg-12 text-center">
                 <div class="row">
-                <?php echo $catalogueController->getProducts() ?>
+                <?php echo $this->searchProducts() ?>
                 </div>
                 <div class="col-lg-12">
                     <nav aria-label="Page navigation example">

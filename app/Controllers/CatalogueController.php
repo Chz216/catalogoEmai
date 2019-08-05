@@ -4,12 +4,6 @@ namespace App\Controllers;
 
 use App\Models\ProductsModel;
 
-// include_once './backend/modelo/MProducto.php';
-// include_once './backend/controlador/CProducto.php';
-// include_once './backend/controlador/CIndex.php';
-// $cIndex = new CIndex();
-// $cProducto = new CProducto();
-
 class CatalogueController {
 
     private $model;

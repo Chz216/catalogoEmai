@@ -28,14 +28,13 @@
                   <a class="nav-link" href="/catalogoEmai/contacto">Contáctanos</a>
               </li>
           </ul>
-          <form class="navbar-form" role="search">
+          <form class="navbar-form" method="post" action="/catalogoEmai/buscar">
               <div class="input-group">
-              <input type="text" class="form-control" placeholder="Buscar Productos...">
+              <input name="text" type="text" class="form-control" placeholder="Buscar Productos...">
               <div class="input-group-append">
-                
-                  <a class="btn btn-danger" type="button" href="/catalogoEmai/buscar/fdf">
+                  <button class="btn btn-danger" type="submit ">
                   <i class="fa fa-search"></i>
-                  </a>
+                  </button>
               </div>
               </div>
           </form>

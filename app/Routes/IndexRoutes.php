@@ -13,7 +13,8 @@ class IndexRoutes {
           $_POST,
           $_COOKIE,
           $_FILES
-      );       
+      );
+      
       $routerContainer = new RouterContainer();
         // Map de las rutas
         $map = $routerContainer->getMap();
@@ -58,7 +59,7 @@ class IndexRoutes {
             'action' => 'newDetailsAction'
         ]);
 
-        $map->get('search', $this->addPath('/buscar/{text}'), [
+        $map->post('search', $this->addPath('/buscar'), [
             'controller' => 'App\Controllers\SearchController',
             'action' => 'searchAction'
         ]);

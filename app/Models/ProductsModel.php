@@ -31,6 +31,18 @@ class ProductsModel extends DataBase {
         }
     }
 
+    public function searchProducts($text) {
+        try {
+            $stmt = $this->conn->prepare("SELECT subcategory.subcategoryName, brands.brandName, products.productId, productName, productDescription, productPrice, imagesProducts.imageProductUri FROM products INNER JOIN imagesProducts ON imagesProducts.productId = products.productId INNER JOIN subcategory ON subcategory.subcategoryId = products.subcategoryId INNER JOIN brands ON brands.brandId = products.brandId WHERE products.productName LIKE :text OR brands.brandName LIKE :text GROUP BY productId ASC");
+            $stmt->bindValue(":text", "%$text%");
+            $stmt->execute();
+
+            return $stmt->fetchAll();
+        } catch (\PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
+    }
+
     public function getProductById($productId) {
         try {
             $stmt = $this->conn->prepare("SELECT products.productId, subcategory.subcategoryName, ".

@@ -20,6 +20,8 @@ class ContactController {
     public function insertForm($request){
         if ($request->getMethod() == 'POST') {
             $formData = $request->getParsedBody();
+            var_dump($formData);
+            die();
             $this->model->insertForm($formData);
         }
         //********Bug en contacto insert cada vez que se actuliza *********//
