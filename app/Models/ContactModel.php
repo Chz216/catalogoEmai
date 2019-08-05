@@ -43,10 +43,10 @@ class ContactModel extends DataBase {
 
     public function insertForm($formData) {
         try {
-            $stmt = $this->conn->prepare("insert into formulario (nombre,correo,texto) values(:nombre,:correo,:texto)");
-            $stmt->bindParam(":nombre", $formData["name"]);
-            $stmt->bindParam(":correo", $formData["email"]);
-            $stmt->bindParam(":texto", $formData["suggestion"]);
+            $stmt = $this->conn->prepare("INSERT INTO contact (contactName, contactEmail, contactComment) VALUES (:contactName, :contactEmail, :contactComment)");
+            $stmt->bindParam(":contactName", $formData["contactName"]);
+            $stmt->bindParam(":contactEmail", $formData["contactEmail"]);
+            $stmt->bindParam(":contactComment", $formData["contactComment"]);
 
             return $stmt->execute();
 

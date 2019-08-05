@@ -58,17 +58,17 @@
                 <form action="contacto" method="post">
                     <div class="form-group">
                         <label for="exampleInputEmail1">Nombre</label>
-                        <input name="name" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Escribe tu nombre">
+                        <input name="contactName" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Escribe tu nombre">
                         <br>
 
                         <label for="exampleInputEmail1">Correo electronico</label>
-                        <input name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Escribe tu correo">
+                        <input name="contactEmail" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Escribe tu correo">
                         <small id="emailHelp" class="form-text text-muted">Verifica tu correo.</small>
 
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword1">Queja o sugerencia</label>
-                        <textarea name="suggestion" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        <textarea name="contactComment" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                     </div>
 
                     <button type="submit" class="btn btn-secondary btn-lg btn-block">Enviar</button>
